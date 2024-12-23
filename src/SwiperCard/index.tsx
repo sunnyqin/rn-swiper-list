@@ -255,12 +255,14 @@ const SwipeableCard = forwardRef<
       });
 
     const rCardStyle = useAnimatedStyle(() => {
-      const opacity = withTiming(index - activeIndex.value < 5 ? 1 : 0);
+      const opacity = withTiming(index - activeIndex.value < 3 ? 1 : 0);
       const scale = withTiming(1 - 0.07 * (index - activeIndex.value));
+      const top = withTiming(index - activeIndex.value < 3 ? (index - activeIndex.value) * 10 : 0);
       return {
         opacity,
         position: 'absolute',
         zIndex: -index,
+        top,
         transform: [
           { rotate: `${rotateX.value}rad` },
 
